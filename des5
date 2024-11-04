@@ -1,0 +1,22 @@
+def read_file(filename):  
+    try:  
+        # Abrir el archivo  
+        with open(filename, 'r') as file:  
+            # Leer el contenido del archivo  
+            content = file.read()  
+            
+            # Mostrar el contenido  
+            print(content)  
+    
+    except FileNotFoundError:  
+        print(f"Error: El archivo '{filename}' no existe.")  
+    
+    except Exception as e:  
+        print(f"Error inesperado: {e}")  
+    
+    finally:  
+        print("Cerrando el archivo.")  
+
+# Ejemplo de uso  
+read_file('ejemplo.txt')  
+read_file('no_existe.txt')
