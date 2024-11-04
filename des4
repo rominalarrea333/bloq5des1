@@ -1,0 +1,25 @@
+class NegativeNumberError(Exception):  
+    """Excepción personalizada para números negativos"""  
+    pass  
+
+def calculate_square_root(number):  
+    try:  
+        # Verificar que el número sea positivo  
+        if number < 0:  
+            raise NegativeNumberError("No se puede calcular la raíz cuadrada de un número negativo")  
+        
+        # Calcular la raíz cuadrada  
+        result = number ** 0.5  
+        return result  
+    
+    except NegativeNumberError as e:  
+        print(e)  
+    except TypeError:  
+        print("Error: El valor ingresado no es un número")  
+    except Exception as e:  
+        print(f"Error inesperado: {e}")  
+
+# Ejemplo de uso  
+print(calculate_square_root(16))  # Output: 4.0  
+print(calculate_square_root(-4))  # Output: No se puede calcular la raíz cuadrada de un número negativo  
+print(calculate_square_root("a"))  # Output: Error: El valor ingresado no es un número
