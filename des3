@@ -1,0 +1,10 @@
+# Calcular el factorial
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+except ValueError as e:
+    print(e)
+except RecursionError:
+    print("Error: el número es demasiado grande para ser procesado.")
