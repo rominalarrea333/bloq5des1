@@ -1,0 +1,36 @@
+def calculate_operations(values):  
+    try:  
+        # Suma  
+        total = sum(values)  
+        print(f"La suma de los valores es: {total}")  
+        
+        # Promedio  
+        average = total / len(values)  
+        print(f"El promedio de los valores es: {average}")  
+        
+        # Máximo  
+        max_value = max(values)  
+        print(f"El valor máximo es: {max_value}")  
+        
+        # Mínimo  
+        min_value = min(values)  
+        print(f"El valor mínimo es: {min_value}")  
+        
+        # División  
+        division_value = values[0] / values[1]  
+        print(f"La división del primer y segundo valor es: {division_value}")  
+    
+    except ZeroDivisionError:  
+        print("Error: División por cero")  
+    except TypeError:  
+        print("Error: Tipo de dato no válido en la lista")  
+    except ValueError:  
+        print("Error: Valor no válido en la lista")  
+    except IndexError:  
+        print("Error: Índice fuera de rango en la lista")  
+    except Exception as e:  
+        print(f"Error inesperado: {e}")  
+
+# Ejemplo de uso  
+values = [10, 5, 0, 'a', 15]  
+calculate_operations(values)
