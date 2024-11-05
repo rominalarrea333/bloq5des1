@@ -1,0 +1,9 @@
+# Lista original con elementos repetidos  
+numeros_originales = [5, 2, 8, 3, 9, 2, 5, 7, 3, 1]  
+
+# Eliminar los elementos duplicados  
+numeros_sin_duplicados = list(set(numeros_originales))  
+
+# Imprimir la lista original y la lista sin duplicados  
+print("Lista original:", numeros_originales)  
+print("Lista sin duplicados:", numeros_sin_duplicados)
