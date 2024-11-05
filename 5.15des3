@@ -1,0 +1,39 @@
+class Node:  
+    def __init__(self, data):  
+        self.data = data  
+        self.left = None  
+        self.right = None  
+
+def build_tree():  
+    # Crear el árbol binario  
+    root = Node(1)  
+    root.left = Node(2)  
+    root.right = Node(3)  
+    root.left.left = Node(4)  
+    root.left.right = Node(5)  
+    root.right.left = Node(6)  
+    root.right.right = Node(7)  
+
+    return root  
+
+def find_max_postorder(node):  
+    if not node:  
+        return float('-inf')  
+
+    # Encontrar el valor máximo en el subárbol izquierdo  
+    left_max = find_max_postorder(node.left)  
+
+    # Encontrar el valor máximo en el subárbol derecho  
+    right_max = find_max_postorder(node.right)  
+
+    # Comparar el valor actual del nodo, el valor máximo del subárbol izquierdo y el valor máximo del subárbol derecho  
+    max_value = max(node.data, left_max, right_max)  
+
+    return max_value  
+
+# Construir el árbol binario  
+root = build_tree()  
+
+# Encontrar el valor máximo en el árbol binario siguiendo un recorrido en postorden  
+max_value = find_max_postorder(root)  
+print("Valor máximo en el árbol binario:", max_value)
