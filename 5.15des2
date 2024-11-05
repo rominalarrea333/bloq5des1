@@ -1,0 +1,39 @@
+class Node:  
+    def __init__(self, data):  
+        self.data = data  
+        self.left = None  
+        self.right = None  
+
+def build_tree():  
+    # Crear el árbol binario  
+    root = Node(1)  
+    root.left = Node(2)  
+    root.right = Node(3)  
+    root.left.left = Node(4)  
+    root.left.right = Node(5)  
+    root.right.left = Node(6)  
+    root.right.right = Node(7)  
+
+    return root  
+
+def inorder_sum(node):  
+    if not node:  
+        return 0  
+
+    # Recorrer el subárbol izquierdo  
+    left_sum = inorder_sum(node.left)  
+
+    # Sumar el valor del nodo actual  
+    total_sum = left_sum + node.data  
+
+    # Recorrer el subárbol derecho  
+    right_sum = inorder_sum(node.right)  
+
+    return total_sum + right_sum  
+
+# Construir el árbol binario  
+root = build_tree()  
+
+# Calcular la suma de los valores de los nodos en inorden  
+total_sum = inorder_sum(root)  
+print("Suma de los valores de los nodos en inorden:", total_sum)
