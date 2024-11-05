@@ -1,0 +1,47 @@
+class Node:  
+    def __init__(self, data):  
+        self.data = data  
+        self.left = None  
+        self.right = None  
+
+def build_expression_tree(expression):  
+    stack = []  
+    operators = {'+', '-', '*', '/'}  
+
+    for char in expression:  
+        if char.isdigit():  
+            stack.append(Node(int(char)))  
+        elif char in operators:  
+            right_node = stack.pop()  
+            left_node = stack.pop()  
+            node = Node(char)  
+            node.left = left_node  
+            node.right = right_node  
+            stack.append(node)  
+
+    return stack.pop()  
+
+def evaluate_expression_tree(root):  
+    if not root:  
+        return 0  
+
+    if not root.left and not root.right:  
+        return root.data  
+
+    left_value = evaluate_expression_tree(root.left)  
+    right_value = evaluate_expression_tree(root.right)  
+
+    if root.data == '+':  
+        return left_value + right_value  
+    elif root.data == '-':  
+        return left_value - right_value  
+    elif root.data == '*':  
+        return left_value * right_value  
+    elif root.data == '/':  
+        return left_value / right_value  
+
+# Ejemplo de uso  
+expression = "2+3*4-5"  
+root = build_expression_tree(expression)  
+result = evaluate_expression_tree(root)  
+print("Resultado de la expresión:", result)
