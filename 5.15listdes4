@@ -1,0 +1,26 @@
+# Lista 1  
+lista1 = [5, 2, 8, 3, 9]  
+
+# Lista 2  
+lista2 = [1, 4, 6, 2]  
+
+# Calcular la longitud máxima de las listas  
+longitud_max = max(len(lista1), len(lista2))  
+
+# Inicializar la lista de resultados  
+resultado = []  
+
+# Iterar a través de las posiciones y sumar los elementos correspondientes  
+for i in range(longitud_max):  
+    # Obtener los elementos de cada lista en la posición actual  
+    # Si la posición está fuera de los límites de una lista, se trata como 0  
+    elemento1 = lista1[i] if i < len(lista1) else 0  
+    elemento2 = lista2[i] if i < len(lista2) else 0  
+
+    # Sumar los elementos y agregar el resultado a la lista de resultados  
+    resultado.append(elemento1 + elemento2)  
+
+# Imprimir las listas originales y el resultado  
+print("Lista 1:", lista1)  
+print("Lista 2:", lista2)  
+print("Resultado:", resultado)
