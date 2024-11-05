@@ -1,0 +1,43 @@
+class Node:  
+    def __init__(self, data):  
+        self.data = data  
+        self.left = None  
+        self.right = None  
+
+def insert_node(root, data):  
+    if not root:  
+        return Node(data)  
+
+    if data < root.data:  
+        root.left = insert_node(root.left, data)  
+    elif data > root.data:  
+        root.right = insert_node(root.right, data)  
+    else:  
+        return root  
+
+    return root  
+
+def build_bst(numbers):  
+    root = None  
+    for num in numbers:  
+        root = insert_node(root, num)  
+    return root  
+
+def search_bst(root, target):  
+    if not root:  
+        return False  
+
+    if root.data == target:  
+        return True  
+    elif target < root.data:  
+        return search_bst(root.left, target)  
+    else:  
+        return search_bst(root.right, target)  
+
+# Ejemplo de uso  
+numbers = [5, 3, 7, 2, 4, 6, 8]  
+root = build_bst(numbers)  
+
+# Buscar números en el árbol  
+print("¿Existe el número 4 en el árbol?:", search_bst(root, 4))  # True  
+print("¿Existe el número 9 en el árbol?:", search_bst(root, 9))  # False
