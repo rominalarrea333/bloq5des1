@@ -1,0 +1,12 @@
+# Lista de códigos de productos  
+productos = ["P001", "P002", "P003", "P004", "P005"]  
+
+# Pedir al usuario que ingrese el código de producto  
+codigo_producto = input("Ingrese el código del producto: ")  
+
+# Buscar el código en la lista  
+if codigo_producto in productos:  
+    posicion = productos.index(codigo_producto)  
+    print(f"El código '{codigo_producto}' se encuentra en la posición {posicion + 1} de la lista.")  
+else:  
+    print(f"El código '{codigo_producto}' no se encuentra en la lista.")
