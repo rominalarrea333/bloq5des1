@@ -1,0 +1,15 @@
+def binary_search_student(students, target_student):  
+    left = 0  
+    right = len(students) - 1  
+
+    while left <= right:  
+        middle = (left + right) // 2  
+
+        if students[middle] == target_student:  
+            return f"El estudiante '{target_student}' se encontró en la lista."  
+        elif students[middle] < target_student:  
+            left = middle + 1  
+        else:  
+            right = middle - 1  
+
+    return f"El estudiante '{target_student}' no se encontró en la lista."  
