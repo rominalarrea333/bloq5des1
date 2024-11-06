@@ -1,0 +1,39 @@
+from collections import deque  
+
+class Student:  
+    def __init__(self, name):  
+        self.name = name  
+
+class Grade:  
+    def __init__(self, level, students):  
+        self.level = level  
+        self.students = students  
+
+class School:  
+    def __init__(self, grades):  
+        self.grades = grades  
+
+    def level_order_traversal(self):  
+        if not self.grades:  
+            return  
+
+        queue = deque([self.grades[0]])  
+
+        while queue:  
+            level = []  
+            level_size = len(queue)  
+
+            for _ in range(level_size):  
+                current_grade = queue.popleft()  
+                print(f"Grado {current_grade.level}:")  
+                for student in current_grade.students:  
+                    print(student.name)  
+
+                if current_grade.level > 1:  
+                    for next_grade in self.grades:  
+                        if next_grade.level == current_grade.level - 1:  
+                            queue.append(next_grade)  
+                            break  
+
+        print()  
+
