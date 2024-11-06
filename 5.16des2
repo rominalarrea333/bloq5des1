@@ -1,0 +1,22 @@
+def find_grade(grades, target_grade):  
+    for i, student_grades in enumerate(grades):  
+        for j, grade in enumerate(student_grades):  
+            if grade == target_grade:  
+                return i, j  
+    return None, None  
+
+# Ejemplo de uso  
+grades = [  
+    [85, 92, 78, 91],  
+    [90, 88, 92, 87],  
+    [82, 79, 91, 88],  
+    [78, 85, 84, 90]  
+]  
+
+target_grade = 91  
+student_index, subject_index = find_grade(grades, target_grade)  
+
+if student_index is not None and subject_index is not None:  
+    print(f"La calificación {target_grade} se encuentra en el estudiante {student_index + 1} y la materia {subject_index + 1}.")  
+else:  
+    print(f"La calificación {target_grade} no se encontró en la tabla de calificaciones.")
