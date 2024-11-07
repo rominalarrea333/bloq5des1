@@ -1,0 +1,42 @@
+def mostrar_prestamos(nombre_archivo):  
+    try:  
+        with open(nombre_archivo, "r") as archivo:  
+            prestamos = archivo.readlines()  
+            if len(prestamos) == 0:  
+                print("No hay préstamos registrados.")  
+            else:  
+                print("Registros de préstamos:")  
+                for i, prestamo in enumerate(prestamos, start=1):  
+                    libro, prestatario, fecha = prestamo.strip().split(",")  
+                    print(f"{i}. Libro: {libro}, Prestatario: {prestatario}, Fecha: {fecha}")  
+    except FileNotFoundError:  
+        print(f"El archivo '{nombre_archivo}' no existe.")  
+
+def eliminar_prestamo(nombre_archivo):  
+    mostrar_prestamos(nombre_archivo)  
+
+    try:  
+        with open(nombre_archivo, "r") as archivo:  
+            prestamos = archivo.readlines()  
+
+        if len(prestamos) == 0:  
+            return  
+
+        opcion = int(input("Seleccione el número del préstamo a eliminar (o 0 para salir): "))  
+        if opcion == 0:  
+            return  
+        elif 1 <= opcion <= len(prestamos):  
+            prestamo_a_eliminar = prestamos.pop(opcion - 1)  
+            libro, prestatario, fecha = prestamo_a_eliminar.strip().split(",")  
+            print(f"Se eliminó el préstamo del libro '{libro}' para el prestatario '{prestatario}' con fecha '{fecha}'.")  
+
+            with open(nombre_archivo, "w") as archivo:  
+                archivo.writelines(prestamos)  
+        else:  
+            print("Opción inválida.")  
+    except IndexError:  
+        print("Opción inválida.")  
+    except ValueError:  
+        print("Entrada inválida.")  
+    except FileNotFoundError:  
+        print(f"El archivo '{nombre_archivo}' no existe.")  
