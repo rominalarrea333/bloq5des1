@@ -1,0 +1,26 @@
+class Node:  
+    def __init__(self, promedio):  
+        self.promedio = promedio  
+        self.izquierda = None  
+        self.derecha = None  
+
+def crear_arbol_bst(estudiantes):  
+    raiz = None  
+    for estudiante in estudiantes:  
+        raiz = insertar_nodo(raiz, estudiante)  
+    return raiz  
+
+def insertar_nodo(nodo, promedio):  
+    if nodo is None:  
+        return Node(promedio)  
+    if promedio < nodo.promedio:  
+        nodo.izquierda = insertar_nodo(nodo.izquierda, promedio)  
+    else:  
+        nodo.derecha = insertar_nodo(nodo.derecha, promedio)  
+    return nodo  
+
+def recorrer_inorden(nodo):  
+    if nodo is not None:  
+        recorrer_inorden(nodo.izquierda)  
+        print(nodo.promedio)  
+        recorrer_inorden(nodo.derecha)  
