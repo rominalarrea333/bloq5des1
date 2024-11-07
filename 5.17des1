@@ -1,0 +1,27 @@
+def agregar_prestamo():  
+    nombre_libro = input("Ingrese el nombre del libro: ")  
+    nombre_prestatario = input("Ingrese el nombre del prestatario: ")  
+    fecha_prestamo = input("Ingrese la fecha del préstamo (dd/mm/aaaa): ")  
+
+    registro = f"{nombre_libro},{nombre_prestatario},{fecha_prestamo}\n"  
+
+    with open("prestamos.txt", "a") as archivo:  
+        archivo.write(registro)  
+
+    print("Préstamo registrado exitosamente.")  
+
+def main():  
+    print("Bienvenido al sistema de préstamos de libros.")  
+
+    while True:  
+        accion = input("Ingrese 'a' para agregar un préstamo o 'q' para salir: ")  
+
+        if accion.lower() == 'a':  
+            agregar_prestamo()  
+        elif accion.lower() == 'q':  
+            break  
+        else:  
+            print("Opción inválida. Intente de nuevo.")  
+
+if __name__ == "__main__":  
+    main()
