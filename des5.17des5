@@ -1,0 +1,20 @@
+def contar_palabras_comunes(nombre_archivo, num_palabras):  
+    try:  
+        with open(nombre_archivo, "r") as archivo:  
+            texto = archivo.read().lower()  
+
+        palabras = texto.split()  
+        contador = {}  
+        for palabra in palabras:  
+            if palabra in contador:  
+                contador[palabra] += 1  
+            else:  
+                contador[palabra] = 1  
+
+        palabras_comunes = sorted(contador.items(), key=lambda x: x[1], reverse=True)[:num_palabras]  
+
+        print(f"Las {num_palabras} palabras más comunes en el archivo son:")  
+        for palabra, frecuencia in palabras_comunes:  
+            print(f"{palabra}: {frecuencia}")  
+    except FileNotFoundError:  
+        print(f"El archivo '{nombre_archivo}' no existe.")  
