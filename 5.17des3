@@ -1,0 +1,28 @@
+import csv  
+
+def actualizar_inventario(nombre_archivo, titulo_libro, nueva_cantidad):  
+    datos_actualizados = []  
+
+    try:  
+        with open(nombre_archivo, "r") as archivo:  
+            lector_csv = csv.reader(archivo)  
+            for fila in lector_csv:  
+                if fila[0] == titulo_libro:  
+                    fila[1] = str(nueva_cantidad)  
+                datos_actualizados.append(fila)  
+    except FileNotFoundError:  
+        print(f"El archivo '{nombre_archivo}' no existe.")  
+        return  
+    except (IndexError, ValueError):  
+        print(f"El archivo '{nombre_archivo}' tiene un formato incorrecto.")  
+        return  
+
+    try:  
+        with open(nombre_archivo, "w", newline="") as archivo:  
+            escritor_csv = csv.writer(archivo)  
+            escritor_csv.writerows(datos_actualizados)  
+    except IOError:  
+        print(f"No se pudo escribir en el archivo '{nombre_archivo}'.")  
+        return  
+
+    print(f"El inventario de '{titulo_libro}' se ha actualizado a {nueva_cantidad} copias.")  
