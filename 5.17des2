@@ -1,0 +1,22 @@
+def buscar_libros_por_autor(nombre_archivo, autor):  
+    libros_encontrados = []  
+
+    try:  
+        with open(nombre_archivo, "r") as archivo:  
+            for linea in archivo:  
+                libro, autor_libro = linea.strip().split(",")  
+                if autor_libro.strip() == autor:  
+                    libros_encontrados.append(libro)  
+    except FileNotFoundError:  
+        print(f"El archivo '{nombre_archivo}' no existe.")  
+        return  
+    except ValueError:  
+        print(f"El archivo '{nombre_archivo}' tiene un formato incorrecto.")  
+        return  
+
+    if len(libros_encontrados) > 0:  
+        print(f"Libros escritos por {autor}:")  
+        for libro in libros_encontrados:  
+            print(f"- {libro}")  
+    else:  
+        print(f"No se encontraron libros escritos por {autor}.")  
